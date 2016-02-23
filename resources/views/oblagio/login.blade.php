@@ -22,7 +22,7 @@
   </form>
 
 
-  <a href="#">I forgot my password</a><br>
+  <a href="{{ url('auth/forgot-password') }}">I forgot my password</a><br>
 
 </div><!-- /.login-box-body -->
 @endsection
