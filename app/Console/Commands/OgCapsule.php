@@ -119,7 +119,7 @@ class OgCapsule extends Command
         
         $tableName = $this->cekModel($pathModel);
 
-        //$this->createController($pathModel,$pathController,$pathView);    
-        $this->info($this->createView($pathView));
+        $this->createController($pathModel,$pathController,$pathView);    
+        //$this->info($this->createView($pathView));
     }
 }

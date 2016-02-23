@@ -273,6 +273,15 @@ class Oblagio
 		return $this->flash('info',$message,$action);
 	}
 
+	public function user()
+	{
+		$user = \Auth::user();
+		return $user;
+	}
 
+	public function carbon()
+	{
+		return new \Carbon\Carbon;
+	}
 
 }

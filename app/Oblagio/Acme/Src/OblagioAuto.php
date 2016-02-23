@@ -15,6 +15,11 @@ function contentsPath($url="")
 	return og()->contentsPath.$url;
 }
 
+function assetContents($url)
+{
+	return og()->assetUrl.'contents/'.$url;
+}
+
 function menuAttribute($permalink = "")
 {
 	return og()->getMenuAttribute($permalink);
@@ -30,3 +35,12 @@ function actionAttribute($permalink = "")
 	return og()->getActionAttribute($permalink);
 }
 
+function user()
+{
+	return og()->user();
+}
+
+function carbonParse($parse,$format)
+{
+	return og()->carbon()->parse($parse)->format($format);
+}
