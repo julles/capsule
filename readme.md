@@ -1,7 +1,11 @@
 # Capsule Development Main Repo
 
-Capsule is Admin Panel (Backend) for Website development using Laravel 5.2 and AdminLTE admin template .
+Capsule is Admin Panel (Backend) for Website development using Laravel 5.2 and AdminLTE template.
 
-making crud easy with capsule CRUD generator.
+Making crud easy with capsule CRUD generator.
 
-###Still Development.
+## How to Install ?
+
+The project still development.
+
+magic Admin Panel Coming soon ! :D
