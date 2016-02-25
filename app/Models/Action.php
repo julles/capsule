@@ -3,10 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Menu;
 
 class Action extends Model
 {
     public $guarded = [];
+
+    public function menus()
+    {
+        return $this->belongsToMany(Menu::class,'action_menus');
+    }
 
     public function rules($id="")
     {
