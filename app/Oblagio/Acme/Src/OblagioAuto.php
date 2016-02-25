@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * Author : Muhamad Reza Abdul Rohim <reza.wikrama3@gmail.com>
+ * 
+ * CV Oblagio Berdaya
+ * 
+ * Helper Core Oblagio Class
+ * 
+ */
 function og()
 {
 	return new App\Oblagio\Acme\Src\Oblagio;
