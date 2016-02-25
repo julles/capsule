@@ -71,8 +71,14 @@ class MenuController extends CapsuleController
 
 		try
 		{
-			$model->delete();
-			return og()->flashSuccess('Data has been deleted');		
+			if($model->id == 1 || $this->model->childs($id)->count() > 0)
+            {
+                return og()->flashInfo('Data cannot be deleted');     
+            }
+            
+            $model->delete();
+			
+            return og()->flashSuccess('Data has been deleted');		
 	
 		}catch(\Exception $e){
 		  return og()->flashInfo('Data cannot be deleted');     

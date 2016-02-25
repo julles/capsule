@@ -22,13 +22,23 @@
 		        <tbody>
 		        	@foreach($parents as $parent)
 
-		        	<tr class = 'alert alert-default'>
+		        	<tr class = 'alert alert-warning'>
 		        		<td>This Parent</td>
 		        		<td>{{ $parent->title }}</td>
 		        		<td>{{ $parent->controller }}</td>
 		        		<td>{{ $parent->permalink }}</td>
 		        		<td>{!! og()->links($parent->id) !!}</td>
 		        	</tr>
+
+		        		@foreach($model->childs($parent->id) as $child)
+		        		<tr class = ''>
+			        		<td>{{ $parent->title }}</td>
+			        		<td>{{ $child->title }}</td>
+			        		<td>{{ $child->controller }}</td>
+			        		<td>{{ $child->permalink }}</td>
+			        		<td>{!! og()->links($child->id) !!}</td>
+			        	</tr>
+		        		@endforeach
 
 		        	@endforeach
 		        </tbody>
@@ -47,7 +57,7 @@
 
 <script type="text/javascript">
 	$(function() {
-		$('#table').DataTable();
+		$('#table').DataTable({ordering:false});
 	});
 </script>
 

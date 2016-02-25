@@ -8,6 +8,11 @@ class Menu extends Model
 {
     public $guarded = [];
 
+    public function childs($id)
+    {
+    	return $this->whereParentId($id)->orderBy('order','asc')->get();
+    }
+
     public function countChild($id)
     {
     	$model = $this->whereParentId($id)->count();
