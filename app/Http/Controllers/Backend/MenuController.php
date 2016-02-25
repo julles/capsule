@@ -7,18 +7,21 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Backend\CapsuleController;
 use App\Models\Menu;
+use App\Models\Action;
 
 use Table;
 use Image;
 class MenuController extends CapsuleController
 {
 	public $model;
-	public function __construct(Menu $model)
+	public function __construct(Menu $model,Action $action)
 	{
 		parent::__construct();
 		$this->model = $model;
+        $this->action = $action;
         $parentLists = ['0' => 'This Parent'] + $this->model->whereParentId(0)->lists('title','id')->toArray();
-	    view()->share('parentLists',$parentLists);
+        view()->share('parentLists',$parentLists);
+
     }
 
     public function getIndex()
@@ -84,4 +87,13 @@ class MenuController extends CapsuleController
 		  return og()->flashInfo('Data cannot be deleted');     
 		}
 	}
+
+    public function getView($id)
+    {
+        $model = $this->model->findOrFail($id);
+
+        $actions = $this->action->all();
+
+        return view('oblagio.menu.view',compact('model','actions'));
+    }
 }
