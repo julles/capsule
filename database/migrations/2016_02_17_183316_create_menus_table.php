@@ -23,7 +23,7 @@ class CreateMenusTable extends Migration
             $table->timestamps();
         });
 
-        \DB::unprepared(file_get_contents(database_path('menus_seeds.sql')));
+        //\DB::unprepared(file_get_contents(database_path('menus_seeds.sql')));
     }
 
     /**
