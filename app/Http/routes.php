@@ -2,7 +2,7 @@
 Route::group(['middleware' => ['web']], function () {
     
     Route::get('/',function(){
-    	return view('welcome');
+    	return redirect(config('oblagio.backendUrl'));
     });
    	
    include __DIR__.'/oblagioRoutes.php';
