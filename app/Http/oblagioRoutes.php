@@ -13,15 +13,19 @@ Route::group(['prefix' => og()->backendUrl , 'middleware' => ['backend','auth']]
 			return redirect(og()->firstMenu());
 		});
 
-		foreach(og()->menu()->where('permalink','!=','#')->get() as $row)
+		if(\Schema::hasTable('menus'))
 		{
-			$controllerPath = app_path('Http/Controllers/'.$row->controller.'.php');
-
-			if(file_exists($controllerPath))
+			foreach(og()->menu()->where('permalink','!=','#')->get() as $row)
 			{
-				Route::controller($row->permalink,$row->controller);
+				$controllerPath = app_path('Http/Controllers/'.$row->controller.'.php');
+
+				if(file_exists($controllerPath))
+				{
+					Route::controller($row->permalink,$row->controller);
+				}
 			}
 		}
+			
 	
 	}
 });
