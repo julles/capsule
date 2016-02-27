@@ -30,14 +30,6 @@ class CreateUsersTable extends Migration
                 ->onDelete('restrict');
         });
 
-        \DB::table('users')->insert([
-            'role_id'   => App\Models\Role::find(1)->id,
-            'username'  => 'reza',
-            'name'      => 'Muhamad Reza AR',
-            'email'     => 'reza.wikrama3@gmail.com',
-            'status'    => 'y',
-            'password'  => \Hash::make('reza'),
-        ]);
     }
 
     /**

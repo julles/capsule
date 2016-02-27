@@ -23,18 +23,6 @@ class CreateCrudsTable extends Migration
 
         });
 
-        $faker = Factory::create();
-
-        $limit = 10;
-
-        for($i=0;$i<$limit;$i++)
-        {
-            \DB::table('cruds')->insert([
-                'name'      => $faker->name,
-                'company'   => $faker->company,
-                'gender'    => $faker->randomElement(['men','woman']),
-            ]);
-        }
     }
 
     /**

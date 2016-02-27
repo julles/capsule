@@ -19,20 +19,6 @@ class CreateActionsTable extends Migration
             $table->timestamps();
         });
 
-        \DB::table('actions')->insert([
-            'code' => 'index',
-            'label' => 'Index',
-        ]);
-
-        \DB::table('actions')->insert([
-            'code' => 'create',
-            'label' => 'Create',
-        ]);
-
-        \DB::table('actions')->insert([
-            'code' => 'update',
-            'label' => 'Update',
-        ]);
     }
 
     /**
