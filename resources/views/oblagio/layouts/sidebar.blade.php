@@ -6,7 +6,7 @@
 
       <?php $countChild = $modelMenu->countChild($parent->id); ?>
 
-      <li class = "{{ $countChild > 0 ? 'treeview' : '' }}">
+      <li class = "{{ $countChild > 0 ? 'treeview' : '' }} {{ $menuAttribute->parent_id == $parent->id ? 'active' : '' }}">
         <a href="{{ $parent->permalink != '#' ? OG::urlBackend($parent->permalink.'/index') : '#' }}">
           <i class="{{ $parent->icon }}"></i> <span>{{ $parent->title }}</span> 
             @if($countChild > 0)
