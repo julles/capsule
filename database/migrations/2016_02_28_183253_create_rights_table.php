@@ -14,7 +14,21 @@ class CreateRightsTable extends Migration
     {
         Schema::create('rights', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('menu_action_id')->unsigned();
+            $table->integer('role_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('menu_action_id')
+                ->references('id')
+                ->on('menu_actions')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('role_id')
+                ->references('id')
+                ->on('roles')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
