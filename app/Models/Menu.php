@@ -4,13 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Action;
+use App\Models\MenuAction;
+
 class Menu extends Model
 {
     public $guarded = [];
 
+    
+
     public function actions()
     {
-        return $this->belongsToMany(Action::class,'menu_actions');
+        return $this->belongsToMany(Action::class,'menu_actions')
+            ->withPivot(['id']);
     }
 
     public function childs($id)

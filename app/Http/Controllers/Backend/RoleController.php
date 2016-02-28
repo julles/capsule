@@ -92,8 +92,6 @@ class RoleController extends CapsuleController
         
         $menu = $this->menu;
 
-        $menuActions = $this->menuAction->orderBy('menu_id','desc')->orderBy('action_id','asc')->get();
-    
-        return view('oblagio.role.view',compact('model','parentMenus','menuActions','menu'));
+        return view('oblagio.role.view',compact('model','parentMenus','menu'));
     }
 }

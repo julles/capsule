@@ -16,12 +16,12 @@
 			        	</tr>
 					</thead>
 			        
-						@foreach($menu->whereParentId($parent->id)->get() as $child)
+						@foreach($menu->childs($parent->id) as $child)
 
 							<tbody>
 								@foreach($child->find($child->id)->actions as $action)
 									<tr>
-										<td><input type = 'checkbox' />&nbsp;&nbsp;{{ $action->label.' '.$child->title }}</td>
+										<td><input value = '{{ $action->pivot->id }}' type = 'checkbox' />&nbsp;&nbsp;{{ $action->label.' '.$child->title }}</td>
 									</tr>
 								@endforeach
 							</tbody>
