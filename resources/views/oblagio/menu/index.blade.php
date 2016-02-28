@@ -27,7 +27,11 @@
 		        		<td>{{ $parent->title }}</td>
 		        		<td>{{ $parent->controller }}</td>
 		        		<td>{{ $parent->permalink }}</td>
-		        		<td>{!! og()->links($parent->id) !!}</td>
+		        		<td><?php
+		        			$actions = $parent->controller != '#' ?  ['update','delete','view'] : ['update','delete'];
+		        				echo og()->links($parent->id,$actions);
+
+		        			?></td>
 		        	</tr>
 
 		        		@foreach($model->childs($parent->id) as $child)
