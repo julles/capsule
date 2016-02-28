@@ -31,7 +31,8 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
         ],
         'backend' => [
-            \App\Http\Middleware\StatusDevelopment::class,
+            //\App\Http\Middleware\StatusDevelopment::class,
+            \App\Http\Middleware\IndexMenu::class,
         ],
         'api' => [
             'throttle:60,1',

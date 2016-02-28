@@ -7,7 +7,7 @@
       <?php $countChild = $modelMenu->countChild($parent->id); ?>
 
       <li class = "{{ $countChild > 0 ? 'treeview' : '' }}">
-        <a href="{{ $parent->permalink != '#' ? OG::urlBackend($parent->permalink) : '#' }}">
+        <a href="{{ $parent->permalink != '#' ? OG::urlBackend($parent->permalink.'/index') : '#' }}">
           <i class="{{ $parent->icon }}"></i> <span>{{ $parent->title }}</span> 
             @if($countChild > 0)
               <i class="fa fa-angle-left pull-right"></i>
@@ -17,7 +17,7 @@
         @if($countChild > 0)
           <ul class="treeview-menu">
             @foreach($modelMenu->whereParentId($parent->id)->orderBy('order','asc')->get() as $child)
-              <li><a href="{{ OG::urlBackend($child->permalink) }}"><i class="fa fa-angle-right"></i>{{$child->title}}</a></li>
+              <li><a href="{{ OG::urlBackend($child->permalink.'/index') }}"><i class="fa fa-angle-right"></i>{{$child->title}}</a></li>
             @endforeach
           </ul>
         @endif

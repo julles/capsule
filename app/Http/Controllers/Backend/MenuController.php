@@ -8,17 +8,19 @@ use App\Http\Requests;
 use App\Http\Controllers\Backend\CapsuleController;
 use App\Models\Menu;
 use App\Models\Action;
-
+use App\Models\MenuAction;
+use DB;
 use Table;
 use Image;
 class MenuController extends CapsuleController
 {
 	public $model;
-	public function __construct(Menu $model,Action $action)
+	public function __construct(Menu $model,Action $action,MenuAction $menuAction)
 	{
 		parent::__construct();
 		$this->model = $model;
         $this->action = $action;
+        $this->menuAction = $menuAction;
         $parentLists = ['0' => 'This Parent'] + $this->model->whereParentId(0)->lists('title','id')->toArray();
         view()->share('parentLists',$parentLists);
 
@@ -91,9 +93,50 @@ class MenuController extends CapsuleController
     public function getView($id)
     {
         $model = $this->model->findOrFail($id);
-
+       
         $actions = $this->action->all();
 
-        return view('oblagio.menu.view',compact('model','actions'));
+        $checked = function($id) use ($model)
+        {
+            $action =  $model->actions->find($id);
+            if(!empty($action->id))
+            {
+                return $action->id; 
+            }
+        }; // closure search action in menu
+
+        return view('oblagio.menu.view',compact('model','actions','checked'));
+    }
+
+    public function postView(Request $request , $id)
+    {
+        $model = $this->model->findOrFail($id);
+        
+        DB::beginTransaction();
+
+        try{
+
+            $this->menuAction->whereMenuId($model->id)->delete();
+
+            $count = count($request->action_id);
+            
+            for($i=0;$i<$count;$i++)
+            {
+                $this->menuAction->create([
+                    'menu_id'   => $model->id,
+                    'action_id' => $request->action_id[$i],
+                ]);
+            }
+
+            DB::commit();
+
+            return og()->flashSuccess('Action has been saved');
+
+        }catch(\Exception $e){
+
+            DB::rollback();
+
+            return og()->flashInfo('Transaction Failed : '.$e->getMessage());
+        }
     }
 }
