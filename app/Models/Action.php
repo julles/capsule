@@ -11,7 +11,7 @@ class Action extends Model
 
     public function menus()
     {
-        return $this->belongsToMany(Menu::class,'action_menus');
+        return $this->belongsToMany(Menu::class,'menu_actions');
     }
 
     public function rules($id="")

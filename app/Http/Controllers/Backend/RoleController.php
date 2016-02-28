@@ -7,16 +7,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Backend\CapsuleController;
 use App\Models\Role;
-
+use App\Models\MenuAction;
+use App\Models\Menu;
 use Table;
 use Image;
 class RoleController extends CapsuleController
 {
 	public $model;
-	public function __construct(Role $model)
+	public function __construct(Role $model,MenuAction $menuAction,Menu $menu)
 	{
 		parent::__construct();
 		$this->model = $model;
+        $this->menuAction = $menuAction;
+        $this->menu = $menu;
 	}
 
     public function getIndex()
@@ -80,4 +83,17 @@ class RoleController extends CapsuleController
 		  return og()->flashInfo('Data cannot be deleted');     
 		}
 	}
+
+    public function getView($id)
+    {
+        $model = $this->model->findOrFail($id);
+        
+        $parentMenus = $this->menu->whereParentId(0)->orderBy('order','desc')->get();
+        
+        $menu = $this->menu;
+
+        $menuActions = $this->menuAction->orderBy('menu_id','desc')->orderBy('action_id','asc')->get();
+    
+        return view('oblagio.role.view',compact('model','parentMenus','menuActions','menu'));
+    }
 }
