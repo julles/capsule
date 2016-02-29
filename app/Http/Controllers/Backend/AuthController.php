@@ -31,7 +31,7 @@ class AuthController extends Controller
 
     	if(\Auth::attempt($credentials))
     	{
-    		return redirect(og()->backendUrl);
+    		return redirect(og()->firstMenu().'/index');
     	}else{
     		return redirect()->back()->withInfo('Username or Password wrong');
     	}

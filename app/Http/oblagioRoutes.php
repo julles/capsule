@@ -9,7 +9,7 @@ Route::group(['prefix' => og()->backendUrl , 'middleware' => ['backend','auth']]
 	if(og()->statusDevelopment != 'migration')
 	{
 		Route::get('/' , function(){
-			return redirect(og()->firstMenu().'/index');
+			return redirect('auth');
 		});
 
 		if(\Schema::hasTable('menus'))

@@ -7,19 +7,23 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Backend\CapsuleController;
 use App\Models\Role;
-use App\Models\MenuAction;
 use App\Models\Menu;
+use App\Models\MenuAction;
+use App\Models\Right;
 use Table;
 use Image;
+use DB;
+
 class RoleController extends CapsuleController
 {
 	public $model;
-	public function __construct(Role $model,MenuAction $menuAction,Menu $menu)
+	public function __construct(Role $model,Menu $menu,MenuAction $menuAction,Right $right)
 	{
 		parent::__construct();
 		$this->model = $model;
         $this->menuAction = $menuAction;
         $this->menu = $menu;
+        $this->right = $right;
 	}
 
     public function getIndex()
@@ -92,6 +96,44 @@ class RoleController extends CapsuleController
         
         $menu = $this->menu;
 
-        return view('oblagio.role.view',compact('model','parentMenus','menu'));
+        $rightFirst = function($id) use ($model)
+        {
+            $right = $model->rights()->whereMenuActionId($id)->first();
+            return (!empty($right->id)) ? $right->id : '';
+        };
+
+        return view('oblagio.role.view',compact('model','parentMenus','menu','rightFirst'));
+    }
+
+    public function postView(Request $request , $id)
+    {
+        $model = $this->model->findOrFail($id);
+
+        DB::beginTransaction();
+
+        try
+        {
+            $count = count($request->menu_action_id);
+            DB::table('rights')->where('role_id',$model->id)->delete();
+
+            for($a=0;$a<$count;$a++)
+            {
+                if(!empty($request->menu_action_id[$a]))
+                {
+                    $this->right->create([
+                        'role_id'           => $model->id,
+                        'menu_action_id'    => $request->menu_action_id[$a]
+                    ]);
+                }
+            }
+
+            DB::commit();
+
+            return og()->flashSuccess('actions has been updated');
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return og()->flashInfo('Transaction failed! : '.$e->getMessage());
+        }
     }
 }

@@ -9,6 +9,8 @@ use App\Models\Role;
 
 class MenuAction extends Model
 {
+	protected $table = 'menu_actions';
+
     public $guarded = [];
 
 	public function menu()
@@ -21,7 +23,7 @@ class MenuAction extends Model
 		return $this->belongsTo(Action::class ,'action_id');
 	}
 
-	public function rights();
+	public function rights()
 	{
 		return $this->belonsToMany(Role::class,'rigths');
 	}    

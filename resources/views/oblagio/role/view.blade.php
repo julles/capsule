@@ -6,6 +6,7 @@
 	    <div class="box-body">
 	      	<hr/>
 	      	@include('oblagio.common.all_flashes')
+	    {!! Form::open() !!}
 	      	<table class="table">
 		        
 		        	@foreach($parentMenus as $parent)
@@ -21,7 +22,7 @@
 							<tbody>
 								@foreach($child->find($child->id)->actions as $action)
 									<tr>
-										<td><input value = '{{ $action->pivot->id }}' type = 'checkbox' />&nbsp;&nbsp;{{ $action->label.' '.$child->title }}</td>
+										<td><input {{ !empty($rightFirst($action->pivot->id)) ? 'checked' : '' }} name = 'menu_action_id[]' value = '{{ $action->pivot->id }}' type = 'checkbox' />&nbsp;&nbsp;{{ $action->label.' '.$child->title }}</td>
 									</tr>
 								@endforeach
 							</tbody>
@@ -31,6 +32,12 @@
 		        	@endforeach
 		        
 		    </table>
+
+		    <div class="well">
+		    	<button type="submit" class="btn btn-primary">Update</button>
+		    </div>
+
+		    {!! Form::close() !!}
 	    </div><!-- /.box-body -->
 	  </div><!-- /.box -->
 
