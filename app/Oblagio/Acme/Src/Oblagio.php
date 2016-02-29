@@ -114,7 +114,10 @@ class Oblagio
 
 		$menu = $this->getMenuAttribute();
 
-		$get = user()->role->rights()->whereMenuId($menu->id)->whereActionId($actionId)->first();
+		$get = user()->role->rights()
+			->whereMenuId($menu->id)
+			->whereActionId($actionId)
+			->first();
 
 		if(!empty($get->id))
 		{
@@ -203,7 +206,8 @@ class Oblagio
 			'href'		=> $this->urlBackendAction('create'),
 		];
 
-		return $this->link('Add New &nbsp; <i class="fa fa-plus"></i>',$properties);
+		if($this->cekRight('create') == 'true')
+			return $this->link('Add New &nbsp; <i class="fa fa-plus"></i>',$properties);
 	}
 
 	public function linkUpdate($urlPlus = "")
@@ -213,7 +217,9 @@ class Oblagio
 			'href'		=> $this->urlBackendAction('update/'.$urlPlus),
 		];
 
-		return $this->link('<i class="fa fa-pencil"></i>',$properties);
+		if($this->cekRight('update') == 'true')
+
+			return $this->link('<i class="fa fa-pencil"></i>',$properties);
 	}
 
 	public function linkView($urlPlus = "")
@@ -223,7 +229,8 @@ class Oblagio
 			'href'		=> $this->urlBackendAction('view/'.$urlPlus),
 		];
 
-		return $this->link('<i class="fa fa-eye"></i>',$properties);
+		if($this->cekRight('view') == 'true')	
+			return $this->link('<i class="fa fa-eye"></i>',$properties);
 	}
 
 	public function linkDelete($urlPlus = "")
@@ -234,7 +241,8 @@ class Oblagio
 			'onclick'	=> 'return confirm("are you sure want to delete this item ?")'
 		];
 
-		return $this->link('<i class="fa fa-trash"></i>',$properties);
+		if($this->cekRight('delete') == 'true')
+			return $this->link('<i class="fa fa-trash"></i>',$properties);
 	}
 
 	public function links($id , $links = [] , $makeLink = [])

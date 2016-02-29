@@ -21,7 +21,7 @@ class ActionController extends CapsuleController
 
     public function getIndex()
     {
-    	return view('oblagio.action.index');
+        return view('oblagio.action.index');
     }
 
     public function getData()
