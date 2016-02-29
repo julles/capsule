@@ -11,6 +11,7 @@ class Right extends Model
 
 	public function menu_actions()
 	{
-		return $this->belongsToMany(MenuAction::class,'rights');
+		return $this->belongsToMany(MenuAction::class,'rights')
+			->withPivot(['id','action_id']);
 	}
 }

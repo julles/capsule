@@ -5,13 +5,11 @@ Route::get('auth/sign-out','Backend\AuthController@signOut');
 Route::get('auth/forgot-password','Backend\AuthController@forgotPassword');
 Route::post('auth/forgot-password','Backend\AuthController@postForgotPassword');
 Route::group(['prefix' => og()->backendUrl , 'middleware' => ['backend','auth']],function(){
-	
-	if(og()->statusDevelopment != 'migration')
-	{
+		
 		Route::get('/' , function(){
 			return redirect('auth');
 		});
-
+		Route::auth();
 		if(\Schema::hasTable('menus'))
 		{
 			foreach(og()->menu()->where('permalink','!=','#')->get() as $row)
@@ -24,7 +22,4 @@ Route::group(['prefix' => og()->backendUrl , 'middleware' => ['backend','auth']]
 				}
 			}
 		}
-			
-	
-	}
 });

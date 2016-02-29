@@ -28,7 +28,7 @@ class RoleController extends CapsuleController
 
     public function getIndex()
     {
-    	return view('oblagio.role.index');
+       return view('oblagio.role.index');
     }
 
     public function getData()

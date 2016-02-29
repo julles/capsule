@@ -70,6 +70,7 @@ class CrudController extends CapsuleController
 
 	public function getIndex()
 	{
+		 echo og()->cekRight('create');
 		return view('oblagio.crud.index');
 	}
 

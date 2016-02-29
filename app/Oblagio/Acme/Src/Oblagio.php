@@ -10,6 +10,8 @@
 namespace App\Oblagio\Acme\Src;
 use App\Models\Menu;
 use App\Models\Action;
+use App\User;
+
 class Oblagio
 {
 	public $appName;
@@ -102,6 +104,25 @@ class Oblagio
 		$model = $this->action()->whereCode($segmentAction)->first();
 
 		return $model;
+	}
+
+	public function cekRight($action = "",$menu = "")
+	{
+		$actionUrl = !empty($action) ? $action : request()->segment(3);
+
+		$actionId = $this->getActionAttribute($actionUrl)->id;
+
+		$menu = $this->getMenuAttribute();
+
+		$get = user()->role->rights()->whereMenuId($menu->id)->whereActionId($actionId)->first();
+
+		if(!empty($get->id))
+		{
+			return 'true';
+		}else{
+			return 'false';
+		}
+
 	}
 
 	public function checkIfArray3Dimension($array = [])

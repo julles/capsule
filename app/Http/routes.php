@@ -1,6 +1,9 @@
 <?php
+
+
 Route::group(['middleware' => ['web']], function () {
-    
+	
+
     Route::get('/',function(){
     	return redirect(config('oblagio.backendUrl'));
     });

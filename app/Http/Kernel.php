@@ -33,6 +33,7 @@ class Kernel extends HttpKernel
         'backend' => [
             //\App\Http\Middleware\StatusDevelopment::class,
             \App\Http\Middleware\IndexMenu::class,
+            
         ],
         'api' => [
             'throttle:60,1',

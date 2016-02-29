@@ -9,7 +9,7 @@ class User extends Authenticatable
 {
     public $guarded = ['verify_password'];
 
-    public function user()
+    public function role()
     {
         return $this->belongsTo(Role::class,'role_id');
     }
@@ -34,5 +34,10 @@ class User extends Authenticatable
     		'password'			=>	'required|min:5',
     		'verify_password' 	=>	'same:password',
     	];
+    }
+
+    public function getUser()
+    {
+        return \Auth::user();
     }
 }

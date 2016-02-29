@@ -25,6 +25,6 @@ class MenuAction extends Model
 
 	public function rights()
 	{
-		return $this->belonsToMany(Role::class,'rigths');
+		return $this->belongsToMany(Role::class,'rigths');
 	}    
 }
