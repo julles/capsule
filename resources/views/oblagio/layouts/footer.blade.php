@@ -19,7 +19,22 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ og()->assetLte }}dist/js/demo.js" type="text/javascript"></script>
     
+    <script src="{{ og()->assetUrl }}sweetalert/dist/sweetalert.min.js"></script>
+
+    @if(Session::has('warning'))
+        <script type="text/javascript">
+            swal({
+                  title: "Warning",   
+                  text: "{{ Session::get('warning') }}",   
+                  type: "warning" 
+            });
+        </script>
+    @endif
+
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    
+    
+
     @yield('script')
   </body>
 </html>

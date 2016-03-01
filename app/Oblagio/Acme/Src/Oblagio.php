@@ -110,20 +110,27 @@ class Oblagio
 	{
 		$actionUrl = !empty($action) ? $action : request()->segment(3);
 
-		$actionId = $this->getActionAttribute($actionUrl)->id;
+		$modelAction = $this->getActionAttribute($actionUrl);
 
-		$menu = $this->getMenuAttribute();
-
-		$get = user()->role->rights()
-			->whereMenuId($menu->id)
-			->whereActionId($actionId)
-			->first();
-
-		if(!empty($get->id))
+		if(!empty($modelAction))
 		{
-			return 'true';
+			$actionId = $modelAction->id;
+
+			$menu = $this->getMenuAttribute();
+
+			$get = user()->role->rights()
+				->whereMenuId($menu->id)
+				->whereActionId($actionId)
+				->first();
+
+			if(!empty($get->id))
+			{
+				return 'true';
+			}else{
+				return 'false';
+			}
 		}else{
-			return 'false';
+			return 'true';
 		}
 
 	}

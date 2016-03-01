@@ -1,0 +1,70 @@
+{
+  "name": "sweetalert",
+  "version": "1.1.0",
+  "description": "A beautiful replacement for JavaScript's \"alert\"",
+  "main": "dist/sweetalert.min.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t4t5/sweetalert.git"
+  },
+  "keywords": [
+    "sweetalert",
+    "alert",
+    "modal",
+    "popup"
+  ],
+  "author": {
+    "name": "Tristan Edwards",
+    "email": "tristan.edwards@me.com",
+    "url": "http://tristanedwards.me"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/t4t5/sweetalert/issues"
+  },
+  "homepage": "http://tristanedwards.me/sweetalert",
+  "devDependencies": {
+    "babelify": "^6.0.2",
+    "browserify": "^9.0.8",
+    "glob": "^5.0.3",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.4.3",
+    "gulp-jshint": "^1.9.0",
+    "gulp-minify-css": "^0.3.13",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^2.0.1",
+    "gulp-uglify": "^1.0.2",
+    "gulp-wrap": "^0.11.0",
+    "path": "^0.11.14",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "gulp-qunit": "latest"
+  },
+  "gitHead": "5d58bfa48447d7db0eb66a38a2611d4fd2efe97e",
+  "_id": "sweetalert@1.1.0",
+  "_shasum": "985515c90981c7bee654e1b5df0c98d9ece8d0fc",
+  "_from": "sweetalert@*",
+  "_npmVersion": "2.11.3",
+  "_nodeVersion": "0.12.7",
+  "_npmUser": {
+    "name": "t4t5",
+    "email": "tristan.edwards@me.com"
+  },
+  "maintainers": [
+    {
+      "name": "t4t5",
+      "email": "tristan.edwards@me.com"
+    }
+  ],
+  "dist": {
+    "shasum": "985515c90981c7bee654e1b5df0c98d9ece8d0fc",
+    "tarball": "http://registry.npmjs.org/sweetalert/-/sweetalert-1.1.0.tgz"
+  },
+  "_resolved": "https://registry.npmjs.org/sweetalert/-/sweetalert-1.1.0.tgz"
+}

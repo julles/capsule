@@ -1,47 +1,16 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Migration Development.</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Migration Development.</div>
-            </div>
-        </div>
-    </body>
-</html>
+@extends('oblagio.layouts.layout')
+@section('content')
+  <div class = "row">
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <h2>403</h2>
+      </div>
+      <div class="col-md-8">
+        <h3><i class="fa fa-warning text-yellow"></i> Whoops!.</h3>
+        <p>
+          You not Authorize this Page
+        </p>
+      </div>
+    </div>
+  </div>
+@endsection

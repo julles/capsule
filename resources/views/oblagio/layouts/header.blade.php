@@ -16,6 +16,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="{{ og()->assetLte }}dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ og()->assetUrl }}sweetalert/dist/sweetalert.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
