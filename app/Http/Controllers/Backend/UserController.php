@@ -11,6 +11,7 @@ use App\User;
 use App\Models\Role;
 use Table;
 use Image;
+
 class UserController extends CapsuleController
 {
 	public $model;
