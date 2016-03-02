@@ -1,11 +1,11 @@
-<?php 
+<?php
 /**
  * Author : Muhamad Reza Abdul Rohim <reza.wikrama3@gmail.com>
- * 
+ *
  * CV Oblagio Berdaya
- * 
+ *
  * Helper Core Oblagio Class
- * 
+ *
  */
 namespace App\Oblagio\Acme\Src;
 use App\Models\Menu;
@@ -27,7 +27,7 @@ class Oblagio
 	public function __construct()
 	{
 		$this->appName = config('oblagio.appName');
-		
+
 		$this->backendUrl = config('oblagio.backendUrl');
 
 		$this->assetUrl = asset(null);
@@ -72,7 +72,7 @@ class Oblagio
 		}else{
 			$segmentMenu = request()->segment(2);
 		}
-		
+
 		$model = $this->menu()->wherePermalink($segmentMenu)->first();
 
 		return $model;
@@ -100,7 +100,7 @@ class Oblagio
 		}else{
 			$segmentAction = !empty(request()->segment(3)) ? request()->segment(3) : '';
 		}
-		
+
 		$model = $this->action()->whereCode($segmentAction)->first();
 
 		return $model;
@@ -138,7 +138,7 @@ class Oblagio
 	public function checkIfArray3Dimension($array = [])
 	{
 		$count = count($array);
-		
+
 		for($a=0;$a<$count;$a++)
 		{
 			if(is_array(@$array[$a]))
@@ -148,14 +148,14 @@ class Oblagio
 				throw new \Exception("Format Eloquent Salah , Konversi array 3 dimensi ke 2 dimensi gagal ! , helper oblagio table tidak bisa dijalankan");
 			}
 		}
-	} 
+	}
 
 	public function convertArrayTo2Dimension($array = [])
 	{
 		$check = $this->checkIfArray3Dimension($array);
 
 		if($check == true)
-		{	
+		{
 			$result2Dimension = [];
 			foreach($array as $threeDimension)
 			{
@@ -174,7 +174,7 @@ class Oblagio
 
 	public function getFieldEloquent($eloquent = "")
 
-	{	
+	{
 		$twoDimension = $this->convertArrayTo2Dimension($eloquent);
 		$field = [];
 		foreach($twoDimension as $key => $value)
@@ -183,7 +183,7 @@ class Oblagio
 		}
 
 		return $field;
-	}	
+	}
 
 	public function link($label , $others = [])
 	{
@@ -198,11 +198,11 @@ class Oblagio
 			$others = $str;
 
 		}else{
-		
+
 			$others = '';
-		
-		}	
-		
+
+		}
+
 		return "<a ".$others.">".$label."</a>";
 	}
 
@@ -236,7 +236,7 @@ class Oblagio
 			'href'		=> $this->urlBackendAction('view/'.$urlPlus),
 		];
 
-		if($this->cekRight('view') == 'true')	
+		if($this->cekRight('view') == 'true')
 			return $this->link('<i class="fa fa-eye"></i>',$properties);
 	}
 
@@ -255,15 +255,15 @@ class Oblagio
 	public function links($id , $links = [] , $makeLink = [])
 	{
 		$linkUpdate = $this->linkUpdate($id);
-		
+
 		$linkView = $this->linkView($id);
-		
+
 		$linkDelete = $this->linkDelete($id);
-		
+
 		$buttons = [
 			'update'	=> $linkUpdate,
-			'view'		=> $linkView, 
-			'delete'	=> $linkDelete,			
+			'view'		=> $linkView,
+			'delete'	=> $linkDelete,
 		];
 
 		$links = (!empty($links)) ? $links : array_keys($buttons);
@@ -294,7 +294,7 @@ class Oblagio
 	public function flash($keyMessage , $valueMessage , $action = "")
 	{
 		$action = (!empty($action)) ? $action : og()->urlBackendAction('index');
-		
+
 		return redirect($action)
 			->with($keyMessage,$valueMessage);
 	}

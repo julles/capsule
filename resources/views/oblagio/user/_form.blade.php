@@ -3,13 +3,13 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="box box-primary">
-		
+
 		{!! Form::model($model,['files'=>true]) !!}
-        
+
           <div class="box-body">
-	      
+
 	        @include('oblagio.common.error_validation')
-	          
+
             <div class="form-group">
               <label>Role</label>
               {!! Form::select('role_id',$roles,null,['class'=>'form-control']) !!}
@@ -53,14 +53,13 @@
           </div><!-- /.box-body -->
 
           <div class="box-footer">
-            <button class="btn btn-primary" type="submit">{{ ucfirst(request()->segment(3)) }}</button>
+            <button class="btn btn-primary" type="submit">{{ !empty($model->id) ? 'Update' : 'Create' }}</button>
           </div>
         {!! Form::close() !!}
-		
-		</div>	  
+
+		</div>
 	</div>
 </div>
-    
+
 
 @endsection
-

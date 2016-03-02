@@ -18,22 +18,32 @@
     <script src="{{ og()->assetLte }}dist/js/app.min.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ og()->assetLte }}dist/js/demo.js" type="text/javascript"></script>
-    
+
     <script src="{{ og()->assetUrl }}sweetalert/dist/sweetalert.min.js"></script>
 
     @if(Session::has('warning'))
         <script type="text/javascript">
             swal({
-                  title: "Warning",   
-                  text: "{{ Session::get('warning') }}",   
-                  type: "warning" 
+                  title: "Warning",
+                  text: "{{ Session::get('warning') }}",
+                  type: "warning"
+            });
+        </script>
+    @endif
+
+    @if(Session::has('sweetsuccess'))
+        <script type="text/javascript">
+            swal({
+                  title: "Success",
+                  text: "{{ Session::get('sweetsuccess') }}",
+                  type: "success"
             });
         </script>
     @endif
 
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-    
-    
+
+
 
     @yield('script')
   </body>
