@@ -33,7 +33,7 @@ composer install
 install capsule to completion
 
 ```sh
-php artisan capsule::install
+php artisan capsule:install
 ```
 
 open your application in browser
