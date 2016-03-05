@@ -154,7 +154,8 @@ return [
         App\Oblagio\Acme\Src\OblagioProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+        App\Providers\ShareProvider::class,
     ],
 
     /*
