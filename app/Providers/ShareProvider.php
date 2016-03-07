@@ -17,15 +17,7 @@ class ShareProvider extends ServiceProvider
     
     public function boot()
     {
-        $this->menu = new Menu;
-        
-        if(\Auth::check())
-        {
-            view()->share('modelMenu',$this->menu);
-            view()->share('menuAttribute',menuAttribute());
-            view()->share('menuParent' ,  menuAttributeFind(menuAttribute()->parent_id));
-            
-        }    
+        //$this->menu = new Menu;
     }
 
     /**
