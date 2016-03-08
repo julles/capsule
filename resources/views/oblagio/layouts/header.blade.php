@@ -1,3 +1,9 @@
+<?php
+  function user()
+  {
+    return Auth::user();
+  }
+?>
 <!DOCTYPE html>
 <html>
   <head>
