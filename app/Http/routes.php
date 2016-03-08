@@ -5,7 +5,7 @@ Route::group(['middleware' => ['web']], function () {
 	
 
     Route::get('/',function(){
-    	return redirect(config('oblagio.backendUrl').'/'.config('oblagio.firstMenu').'/index');
+    	//return redirect(config('oblagio.backendUrl').'/'.config('oblagio.firstMenu').'/index');
     });
 });
 

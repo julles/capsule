@@ -40,6 +40,9 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\IndexMenu::class,
             \App\Http\Middleware\Right::class,
             \App\Http\Middleware\Authenticate::class,
+            Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+            \App\Http\Middleware\RedirectIfAuthenticated::class,
+            \Illuminate\Routing\Middleware\ThrottleRequests::class,
             
         ],
         'api' => [
