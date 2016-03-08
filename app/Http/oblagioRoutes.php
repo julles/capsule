@@ -7,7 +7,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('auth/forgot-password','Backend\AuthController@postForgotPassword');
 });
 
-Route::group(['prefix' => og()->backendUrl , 'middleware' => ['backend','auth']],function(){
+Route::group(['prefix' => og()->backendUrl , 'middleware' => ['backend']],function(){
 		
 		Route::get('/' , function(){
 			return redirect('auth');
