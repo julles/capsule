@@ -32,18 +32,23 @@ class Kernel extends HttpKernel
         ],
         'backend' => [
             //\App\Http\Middleware\StatusDevelopment::class,
-            \App\Http\Middleware\EncryptCookies::class,
-            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-            \Illuminate\Session\Middleware\StartSession::class,
-            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
             \App\Http\Middleware\IndexMenu::class,
             \App\Http\Middleware\Right::class,
-            \App\Http\Middleware\Authenticate::class,
-            Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-            \App\Http\Middleware\RedirectIfAuthenticated::class,
-            \Illuminate\Routing\Middleware\ThrottleRequests::class,
             
+        ],
+        'auth' => [
+            \App\Http\Middleware\EncryptCookies::class,
+
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+
+            \Illuminate\Session\Middleware\StartSession::class,
+
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+
+            \App\Http\Middleware\VerifyCsrfToken::class,
+
+            \App\Http\Middleware\Authenticate::class
+
         ],
         'api' => [
             'throttle:60,1',
