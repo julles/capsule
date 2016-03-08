@@ -8,7 +8,7 @@ Route::group(['prefix' => og()->backendUrl , 'middleware' => ['auth','backend']]
 		Route::auth();
 		if(\Schema::hasTable('menus'))
 		{
-			foreach(og()->menu()->where('permalink','!=','#')->get() as $row)
+			foreach(og()->menu()->where('controller','!=','#')->get() as $row)
 			{
 				$controllerPath = app_path('Http/Controllers/'.$row->controller.'.php');
 
