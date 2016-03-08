@@ -44,7 +44,7 @@ function actionAttribute($permalink = "")
 
 function user()
 {
-	return og()->user();
+	return auth()->user();
 }
 
 function carbonParse($parse,$format)
