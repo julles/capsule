@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
+
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    
     public function login()
     {
 		return view('oblagio.login');    	
