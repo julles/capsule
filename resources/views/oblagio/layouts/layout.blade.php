@@ -1,4 +1,3 @@
-
 @include('oblagio.layouts.header')
 @include('oblagio.layouts.sidebar')
 
