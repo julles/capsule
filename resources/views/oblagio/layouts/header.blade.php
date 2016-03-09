@@ -44,16 +44,16 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="{{ assetContents(user()->avatar) }}" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">{{ user()->name }}</span>
+                  <img src="{{ assetContents($getUser->avatar) }}" class="user-image" alt="User Image"/>
+                  <span class="hidden-xs">{{ $getUser->name }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="{{ assetContents(user()->avatar) }}" class="img-circle" alt="User Image" />
+                    <img src="{{ assetContents($getUser->avatar) }}" class="img-circle" alt="User Image" />
                     <p>
-                     {{ user()->name }}
-                      <small>Member since {{ carbonParse(user()->created_at,"d F Y") }}</small>
+                     {{ $getUser->name }}
+                      <small>Member since {{ carbonParse($getUser->created_at,"d F Y") }}</small>
                     </p>
                   </li>
                   <li class="user-footer">

@@ -15,7 +15,7 @@ class CapsuleController extends Controller
     public function __construct()
     {
     	$this->menu = new Menu;
-
+    	view()->share('getUser',\Auth::user());
 		view()->share('modelMenu',$this->menu);
         view()->share('menuAttribute',menuAttribute());
         view()->share('menuParent' ,  menuAttributeFind(menuAttribute()->parent_id));
