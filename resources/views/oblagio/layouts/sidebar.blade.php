@@ -1,9 +1,18 @@
 @if(Auth::check())
+
+<?php
+  $parents = $modelMenu->whereParentId(0);
+  if(config('oblagio.status') == 'live')
+  {
+     $parents = $modelMenu->whereParentId(0)->where('id','!=',3); 
+  }
+?>
+
 <aside class="main-sidebar">
   <section class="sidebar">
     <ul class="sidebar-menu">
       <li class="header">MAIN NAVIGATION</li>
-      @foreach($modelMenu->whereParentId(0)->orderBy('order','asc')->get() as $parent)
+      @foreach($parents->orderBy('order','asc')->get() as $parent)
 
       <?php $countChild = $modelMenu->countChild($parent->id); ?>
 
