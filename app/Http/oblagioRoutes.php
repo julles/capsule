@@ -5,7 +5,10 @@ Route::group(['prefix' => og()->backendUrl , 'middleware' => ['web','auth','back
 		{
 			foreach(og()->menu()->where('controller','!=','#')->get() as $row)
 			{
-				Route::controller($row->permalink,$row->controller);
+				if(\File::exists(app_path('Http/Controllers/'.str_replace("\\","/",$row->controller.'.php'))))
+				{
+					Route::controller($row->permalink,$row->controller);
+				}
 				
 			}
 		}
