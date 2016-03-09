@@ -9,6 +9,11 @@ use App\Http\Controllers\Backend\CapsuleController;
 
 class DashboardController extends CapsuleController
 {
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
     public function getIndex()
     {
     	return view('welcome');
