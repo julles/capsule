@@ -66,7 +66,7 @@ class Menu extends Model
     	{
     		return '#';
     	}else{
-    		return str_slug($request->permalink);
+    		return str_slug($request->title);
     	}
     }
 }

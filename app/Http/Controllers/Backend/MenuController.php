@@ -48,7 +48,7 @@ class MenuController extends CapsuleController
     	$this->validate($request,$this->model->rules("",$request));
         $inputs = $request->all();
         $inputs['permalink'] = $this->model->setPermalink($request);
-    	$this->model->create($request->all());
+    	$this->model->create($inputs);
  		return og()->flashSuccess('Data has been saved');
  	}
 
@@ -66,7 +66,7 @@ class MenuController extends CapsuleController
     	$this->validate($request,$model->rules($id,$request));
         $inputs = $request->all();
         $inputs['permalink'] = $this->model->setPermalink($request);
-        $model->update($request->all());
+        $model->update($inputs);
         return og()->flashSuccess('Data has been updated');
 	}
 
