@@ -21,6 +21,8 @@
 
     <script src="{{ og()->assetUrl }}sweetalert/dist/sweetalert.min.js"></script>
 
+    <script src="{{ og()->assetUrl }}ckeditor/ckeditor.js"></script>
+
     @if(Session::has('warning'))
         <script type="text/javascript">
             swal({

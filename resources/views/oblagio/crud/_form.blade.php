@@ -1,3 +1,4 @@
+
 @extends('oblagio.layouts.layout')
 @section('content')
 <div class="row">
@@ -23,6 +24,11 @@
             <div class="form-group">
               <label>Gender</label>
               {!! Form::select('gender',$gender,null,['class'=>'form-control']) !!}
+            </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              {!! Form::textarea('description',null,['class'=>'form-control','id' => 'editor1']) !!}
             </div>
 
             <div class="form-group" id = 'ogFileDiv'>
@@ -53,3 +59,13 @@
 
 @endsection
 
+@section('script')
+<script>
+
+    var urlImageBrowser = '{{ url('/') }}/ckeditor/plugins/imageuploader/imgbrowser.php';
+
+    CKEDITOR.replace('editor1',{
+        filebrowserBrowseUrl : urlImageBrowser,
+    });
+</script>
+@endsection
