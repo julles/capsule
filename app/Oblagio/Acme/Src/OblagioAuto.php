@@ -29,7 +29,7 @@ function assetContents($url)
 
 function menuAttribute($permalink = "")
 {
-	return og()->getMenuAttribute($permalink);
+		return og()->getMenuAttribute($permalink);
 }
 
 function menuAttributeFind($id)

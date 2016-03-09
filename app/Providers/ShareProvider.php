@@ -17,7 +17,8 @@ class ShareProvider extends ServiceProvider
     
     public function boot()
     {
-        //$this->menu = new Menu;
+        $this->menu = new Menu;
+            
     }
 
     /**

@@ -1,11 +1,7 @@
 <?php
 
-Route::group(['prefix' => og()->backendUrl , 'middleware' => ['auth','backend']],function(){
+Route::group(['prefix' => og()->backendUrl , 'middleware' => ['backend']],function(){
 		
-		Route::get('/' , function(){
-			return redirect('auth');
-		});
-		Route::auth();
 		if(\Schema::hasTable('menus'))
 		{
 			foreach(og()->menu()->where('controller','!=','#')->get() as $row)

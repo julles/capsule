@@ -1,3 +1,4 @@
+@if(Auth::check())
 <aside class="main-sidebar">
   <section class="sidebar">
     <ul class="sidebar-menu">
@@ -40,3 +41,4 @@
   </section>
   <!-- /.sidebar -->
 </aside>
+@endif

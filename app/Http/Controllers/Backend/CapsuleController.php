@@ -16,12 +16,9 @@ class CapsuleController extends Controller
     {
     	$this->menu = new Menu;
 
-    	if(\Auth::check())
-    	{
-    		view()->share('modelMenu',$this->menu);
-            view()->share('menuAttribute',menuAttribute());
-            view()->share('menuParent' ,  menuAttributeFind(menuAttribute()->parent_id));
-        }
+		view()->share('modelMenu',$this->menu);
+        view()->share('menuAttribute',menuAttribute());
+        view()->share('menuParent' ,  menuAttributeFind(menuAttribute()->parent_id));
             
     }
 }

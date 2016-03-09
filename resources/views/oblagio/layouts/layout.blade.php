@@ -1,3 +1,4 @@
+@if(Auth::check())
 @include('oblagio.layouts.header')
 @include('oblagio.layouts.sidebar')
 
@@ -30,3 +31,4 @@
       </div><!-- /.content-wrapper -->
 
 @include('oblagio.layouts.footer')
+@endif

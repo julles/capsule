@@ -8,22 +8,15 @@ class Right
 {
     public function handle($request, Closure $next)
     {
-        if(\Auth::check())
-        {
-
-        if($request->segment(2) != config('oblagio.firstMenu'))
-            {
-                if(og()->cekRight() == 'false')
-                {
-                    return redirect()->back()->withWarning('You cannot authorize that page');
-                }
-            }
+            // if($request->segment(2) != config('oblagio.firstMenu'))
+            // {
+            //     if(og()->cekRight() == 'false')
+            //     {
+            //         return redirect()->back()->withWarning('You cannot authorize that page');
+            //     }
+            // }
 
             return $next($request);
-            }else{
-            return redirect('auth');
-        }
-
-        
+             
     }
 }
