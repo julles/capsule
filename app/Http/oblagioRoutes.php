@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => og()->backendUrl , 'middleware' => ['backend']],function(){
+Route::group(['prefix' => og()->backendUrl , 'middleware' => ['web','auth','backend']],function(){
 		
 		if(\Schema::hasTable('menus'))
 		{
