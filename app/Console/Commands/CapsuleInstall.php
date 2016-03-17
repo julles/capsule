@@ -38,9 +38,10 @@ class CapsuleInstall extends Command
     public function handle()
     {
         $this->line('Please Wait');
-        \Artisan::call('migrate');
+        \Artisan::call('migrate:refresh');
         \Artisan::call('db:seed');
-
+        \Artisan::call('key:generate');
+        $result = \File::makeDirectory(public_path('contents/thumbnails'), 0775);
         $this->output->progressStart(10);
 
         for ($i = 0; $i < 5; $i++) {
